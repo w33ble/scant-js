@@ -1,0 +1,7 @@
+{
+  "name": "@scant/emitter",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "author": "Joe Fleming <github.com/w33ble>",
+  "license": "MIT"
+}
