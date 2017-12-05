@@ -2,13 +2,30 @@
   "name": "scant",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "precommit": "lint-staged",
+    "lint": "eslint packages/**/*.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/w33ble/scant-js.git"
   },
+  "lint-staged": {
+    "*.{js,json,css}": ["prettier --write", "git add"]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
   "devDependencies": {
-    "lerna": "^2.5.1"
+    "eslint": "^4.9.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "husky": "^0.14.3",
+    "lerna": "^2.5.1",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.0"
   }
 }
