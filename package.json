@@ -1,0 +1,14 @@
+{
+  "name": "scant",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w33ble/scant-js.git"
+  },
+  "devDependencies": {
+    "lerna": "^2.5.1"
+  }
+}
