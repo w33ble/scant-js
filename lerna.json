@@ -1,18 +1,17 @@
 {
   "lerna": "2.5.1",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "independent",
   "commands": {
     "publish": {
       "conventionalCommits": true,
-      "ignore": [
-        "*.md",
-        "test/**"
-      ]
+      "allowBranch": "master",
+      "ignore": ["*.md", "test/**"]
     }
   },
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "publishConfig": {
+    "access": "public"
+  }
 }

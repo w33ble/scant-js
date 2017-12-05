@@ -18,6 +18,7 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "workspaces": ["packages/*"],
   "devDependencies": {
     "eslint": "^4.9.0",
     "eslint-config-prettier": "^2.9.0",
