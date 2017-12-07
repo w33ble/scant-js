@@ -4,7 +4,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "precommit": "lint-staged",
-    "lint": "eslint packages/**/*.js"
+    "lint": "eslint packages/**/*.js",
+    "test": "npm run lint && lerna run test"
   },
   "repository": {
     "type": "git",
