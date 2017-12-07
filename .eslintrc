@@ -9,6 +9,17 @@
     "import"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "import/no-extraneous-dependencies": [
+      "error", {
+        "devDependencies": [
+          "test/**",
+          "packages/**/test/**",
+          "packages/**/*.test.js"
+        ],
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
   }
 }
