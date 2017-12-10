@@ -17,7 +17,7 @@
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "es5"
   },
   "workspaces": ["packages/*"],
   "devDependencies": {
