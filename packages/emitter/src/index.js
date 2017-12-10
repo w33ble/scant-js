@@ -24,6 +24,16 @@ export default function createEmitter() {
       }
       return this;
     },
+
+    listeners(name) {
+      const eventNames = Object.keys(events);
+      if (typeof name === 'string') return events[name] ? events[name].length : 0;
+
+      return eventNames.reduce(
+        (acc, eventName) => Object.assign(acc, { [eventName]: events[eventName].length }),
+        {}
+      );
+    },
   };
 
   return emitter;
