@@ -7,5 +7,16 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "ava": {
+    "require": ["@std/esm"]
+  },
+  "@std/esm": "cjs",
+  "devDependencies": {
+    "@std/esm": "^0.18.0",
+    "ava": "^0.24.0"
   }
 }
