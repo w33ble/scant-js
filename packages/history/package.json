@@ -1,0 +1,42 @@
+{
+  "name": "@scant/history",
+  "version": "0.0.0",
+  "main": "dist/history.umd.js",
+  "module": "dist/history.js",
+  "author": "Joe Fleming <github.com/w33ble>",
+  "repository": "https://github.com/w33ble/scant-js/tree/master/packages/history",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "rimraf coverage && karma start .karma.js",
+    "build": "rimraf dist && rollup -c .rollup.js"
+  },
+  "dependencies": {
+    "@scant/emitter": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^1.3.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-rollup-preprocessor": "^5.0.2",
+    "karma-tap": "^3.1.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.52.1",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-babel-minify": "^3.1.2",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-filesize": "^1.5.0",
+    "rollup-plugin-istanbul": "^2.0.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.1.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-progress": "^0.4.0",
+    "tape": "^4.8.0"
+  }
+}

@@ -1,0 +1,7 @@
+test/
+coverage/
+.babelrc
+.env
+.rollup.js
+.karma.js
+*.log

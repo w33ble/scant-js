@@ -4,7 +4,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "precommit": "lint-staged",
-    "lint": "eslint packages/**/*.js",
+    "lint": "eslint packages/*/src/**/*.js packages/*/test/**/*.js",
     "test": "npm run lint && lerna run test"
   },
   "repository": {
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/w33ble/scant-js.git"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"]
+    "*.{js,json,css}": ["prettier --write"]
   },
   "prettier": {
     "printWidth": 100,
