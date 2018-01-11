@@ -2,6 +2,8 @@
 
 Dead simple browser history notifier.
 
+[![npm](https://img.shields.io/npm/v/@scant/history.svg)](https://www.npmjs.com/package/@scant/history)
+
 ## Install
 
 ```

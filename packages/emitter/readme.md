@@ -2,6 +2,8 @@
 
 Dead simple event emitter
 
+[![npm](https://img.shields.io/npm/v/@scant/emitter.svg)](https://www.npmjs.com/package/@scant/emitter)
+
 ## Install
 
 ```
