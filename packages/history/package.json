@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "test": "rimraf coverage && karma start .karma.js",
+    "test": "rimraf coverage && karma start .karma.js --single-run",
     "build": "rimraf dist && rollup -c .rollup.js"
   },
   "dependencies": {
