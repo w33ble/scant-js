@@ -71,8 +71,8 @@ test('report listener count by name', t => {
   emitter.on('event', () => t.fail());
 
   // check for the listener that was just created
-  t.is(emitter.listeners('event'), 1);
+  t.deepEqual(emitter.listeners('event'), { event: 1 });
 
   // check for listener that was not created
-  t.is(emitter.listeners('no_event'), 0);
+  t.deepEqual(emitter.listeners('no_event'), { no_event: 0 });
 });
