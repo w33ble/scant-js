@@ -22,6 +22,13 @@ const handleHello = name => console.log(`hello ${name}!`);
 // create a listener
 emitter.on('hello', handleHello);
 
+// get count of all listeners
+emitter.listeners(); // { hello: 1 }
+
+// get count of listeners by name
+emitter.listeners('hello'); // { hello: 1 }
+emitter.listeners('farewell'); // { farewell: 0 }
+
 // emit the event, with a payload
 emitter.emit('hello', 'world');
 
