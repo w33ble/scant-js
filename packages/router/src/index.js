@@ -48,8 +48,13 @@ function parseRoute(route, path = '') {
   ];
 }
 
-export default function createRouter(routes) {
+export default function createRouter(routes, opts = {}) {
   if (!Array.isArray(routes)) throw new Error('An array of route objects is required');
+
+  const options = {
+    hashChar: opts.useHash ? '#' : opts.useHashBang ? '#!' : '', // eslint-disable-line no-nested-ternary
+    basepath: startsWithSlash(opts.basepath) && getPath(opts.basepath),
+  };
 
   // flatten routes into descrete objects and parsed paths
   const routeConfigs = routes.reduce(
@@ -122,16 +127,16 @@ export default function createRouter(routes) {
       if (name == null) return false;
 
       // given a name with a slash, it's a url, use it directly
-      if (startsWithSlash(name)) {
-        return name;
-      }
+      if (startsWithSlash(name)) return `${options.hashChar}${options.basepath}${name}`;
 
+      // check that the passed name exists
       if (!routeConfigs.names.includes(name)) return false;
 
       // build and return the route given using provided params
       // throws when a route can not be built
       const routeIndex = routeConfigs.configs.findIndex(config => config.name === name);
-      return routeConfigs.parsers[routeIndex].stringify(params);
+      const route = routeConfigs.parsers[routeIndex].stringify(params);
+      return `${options.hashChar}${options.basepath}${route}`;
     },
   };
 }
