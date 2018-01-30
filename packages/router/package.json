@@ -1,0 +1,21 @@
+{
+  "name": "@scant/router",
+  "version": "0.0.0",
+  "description": "Dead simple router",
+  "main": "src/index.js",
+  "author": "Joe Fleming (https://github.com/w33ble)",
+  "repository": "https://github.com/w33ble/scant-js/tree/master/packages/router",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "tape 'test/*.js'"
+  },
+  "dependencies": {
+    "url-pattern": "^1.0.3"
+  },
+  "devDependencies": {
+    "tape": "^4.8.0"
+  }
+}
