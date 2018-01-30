@@ -5,6 +5,8 @@ const isObjectLike = val => typeof val === 'object' && val != null;
 
 const hasKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 
+const startsWithSlash = path => /^\//.test(path);
+
 // path format helpers
 const isValidRouteConfig = conf => {
   if (!isObjectLike(conf)) return false;
@@ -14,7 +16,7 @@ const isValidRouteConfig = conf => {
 };
 
 const getPath = (path, appendTo = '') => {
-  if (!/^\//.test(path)) return false;
+  if (!startsWithSlash(path)) return false;
   const newPath = `${appendTo.replace(/\/$/, '')}${path}`;
   return newPath.length > 1 ? newPath.replace(/\/$/, '') : newPath;
 };
@@ -112,6 +114,24 @@ export default function createRouter(routes) {
 
       await matched.action(payload);
       return payload;
+    },
+
+    // given a name and optional params, generate a URL from the routes collection
+    create(name, params = {}) {
+      // only create routes from existing named routes
+      if (name == null) return false;
+
+      // given a name with a slash, it's a url, use it directly
+      if (startsWithSlash(name)) {
+        return name;
+      }
+
+      if (!routeConfigs.names.includes(name)) return false;
+
+      // build and return the route given using provided params
+      // throws when a route can not be built
+      const routeIndex = routeConfigs.configs.findIndex(config => config.name === name);
+      return routeConfigs.parsers[routeIndex].stringify(params);
     },
   };
 }
