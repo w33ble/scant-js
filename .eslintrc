@@ -5,22 +5,16 @@
     "sourceType": "module"
   },
   "extends": ["airbnb", "prettier"],
-  "plugins": [
-    "prettier",
-    "import"
-  ],
+  "plugins": ["prettier", "import"],
   "rules": {
     "prettier/prettier": "error",
     "import/no-extraneous-dependencies": [
-      "error", {
-        "devDependencies": [
-          "test/**",
-          "packages/**/test/**",
-          "packages/**/*.test.js"
-        ],
+      "error",
+      {
+        "devDependencies": ["test/**", "packages/**/test/**", "packages/**/*.test.js"],
         "optionalDependencies": false,
         "peerDependencies": false
       }
-    ],
+    ]
   }
 }

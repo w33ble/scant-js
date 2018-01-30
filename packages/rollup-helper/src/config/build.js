@@ -22,7 +22,7 @@ const config = {
   ]),
 };
 
-export default function getConfig(pkg) {
+export default function getBuildConfig(pkg) {
   const banner = getBanner(pkg);
 
   return [
