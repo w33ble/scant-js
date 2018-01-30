@@ -53,13 +53,20 @@ export default function createRouter(routes) {
   const routeConfigs = routes.reduce(
     (acc, route) => {
       parseRoute(route).forEach(({ parser, ...routeConfig }) => {
+        if (routeConfig.name != null && acc.names.includes(routeConfig.name)) {
+          throw new Error(
+            `Route with name '${routeConfig.name}' already defined, names must be unique`
+          );
+        }
+
         acc.parsers.push(parser);
         acc.configs.push(routeConfig);
+        acc.names.push(routeConfig.name);
       });
 
       return acc;
     },
-    { configs: [], parsers: [] }
+    { configs: [], parsers: [], names: [] }
   );
 
   function getRoute(url) {
