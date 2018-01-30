@@ -1,0 +1,26 @@
+{
+  "name": "@scant/rollup-helper",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Rollup helper for @scant packages",
+  "main": "index.js",
+  "bin": {
+    "scant-build": "bin/cli.js"
+  },
+  "author": "Joe Fleming (https://github.com/w33ble)",
+  "license": "MIT",
+  "@std/esm": "cjs",
+  "dependencies": {
+    "@std/esm": "^0.18.0",
+    "rollup": "^0.55.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-babel-minify": "^3.1.2",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-filesize": "^1.5.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.1.0",
+    "rollup-plugin-node-resolve": "^3.0.2",
+    "rollup-plugin-progress": "^0.4.0"
+  }
+}
