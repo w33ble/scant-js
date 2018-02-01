@@ -53,7 +53,7 @@ export default function createRouter(routes, opts = {}) {
 
   const options = {
     hashChar: opts.useHash ? '#' : opts.useHashBang ? '#!' : '', // eslint-disable-line no-nested-ternary
-    basepath: startsWithSlash(opts.basepath) && getPath(opts.basepath),
+    basepath: startsWithSlash(opts.basepath) ? getPath(opts.basepath) : '',
   };
 
   // flatten routes into descrete objects and parsed paths
