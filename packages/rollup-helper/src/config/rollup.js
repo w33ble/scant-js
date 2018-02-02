@@ -14,6 +14,8 @@ const setBabelEnvPreset = targets => ['env', { modules: false, targets }];
 const getBasename = name => name.replace('@scant/', '');
 
 const verifyProps = (obj, keys) => {
+  if (typeof obj !== 'object')
+    throw new Error('Package configuration must be passed into the rollup config creator');
   keys.forEach(key => {
     if (!Object.prototype.hasOwnProperty.call(obj, key))
       throw new Error(`Package object must contain property '${key}'`);
