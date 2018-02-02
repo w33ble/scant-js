@@ -1,6 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
-import istanbul from 'rollup-plugin-istanbul';
+import istanbul from '@w33ble/rollup-plugin-istanbul';
 import { basePlugins } from './common';
 
 export default function getTestConfig() {
