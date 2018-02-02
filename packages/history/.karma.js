@@ -1,8 +1,8 @@
-const { config } = require('@scant/rollup-helper');
+const { configs } = require('@scant/rollup-helper');
 const pkg = require('./package.json');
 
 const isCI = Boolean(process.env.CI);
-const rollupConfig = config.test(pkg);
+const rollupConfig = configs.test(pkg);
 
 module.exports = function(config) {
   config.set({
