@@ -22,7 +22,12 @@ const verifyProps = (obj, keys) => {
 
 const getBabelConfig = ({ targets, include, exclude }) => ({
   babelrc: false,
-  plugins: ['external-helpers'],
+  plugins: [
+    'external-helpers',
+    'transform-object-rest-spread',
+    'transform-async-to-promises',
+    'transform-class-properties',
+  ],
   presets: [setBabelEnvPreset(targets)],
   include,
   exclude,
