@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 /* eslint no-global-assign: 0 */
+
+/*
+  Usage: scant-build [input]
+*/
 require = require('@std/esm')(module);
 const fs = require('fs');
 const path = require('path');

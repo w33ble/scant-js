@@ -1,65 +1,41 @@
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import progress from 'rollup-plugin-progress';
-import filesize from 'rollup-plugin-filesize';
-import minify from 'rollup-plugin-babel-minify';
-import { getBanner, outputPath, basePlugins } from './common';
+import { getBuildConfig } from './rollup';
 
-const config = {
-  input: 'src/index.js',
-  plugins: basePlugins.concat([
-    resolve({
-      jsnext: false,
-      module: false,
-      browser: true,
-      preferBuiltins: true,
+export default function getConfig(pkg) {
+  const defaultTargets = {
+    browsers: 'last 2 Chrome versions, last 2 Firefox versions, safari >= 11, edge >= 15',
+  };
+
+  const config = [
+    getBuildConfig(pkg, {
+      format: 'es',
+      babel: {
+        targets: {
+          browsers: '> 5%, last 2 Chrome versions, last 2 Firefox versions',
+        },
+      },
     }),
-    babel({
-      exclude: 'node_modules/**', // only transpile our source code
+    getBuildConfig(pkg, {
+      format: 'umd',
+      outputSuffix: '.legacy',
+      minify: true,
+      babel: {
+        targets: {
+          browsers: 'ie >= 9, last 2 Safari versions',
+        },
+      },
     }),
-    progress(),
-    filesize(),
-  ]),
-};
-
-export default function getBuildConfig(pkg) {
-  const banner = getBanner(pkg);
-
-  return [
-    {
-      inputOptions: config,
-      outputOptions: {
-        file: `${outputPath}/history.js`,
-        format: 'es',
-        name: pkg.name,
-      },
-    },
-    {
-      inputOptions: config,
-      outputOptions: {
-        file: `${outputPath}/history.umd.js`,
-        format: 'umd',
-        name: pkg.name,
-        banner,
-        sourcemap: true,
-      },
-    },
-    {
-      inputOptions: Object.assign({}, config, {
-        plugins: config.plugins.concat([
-          minify({
-            comments: false,
-            sourceMap: true,
-            banner,
-          }),
-        ]),
-      }),
-      outputOptions: {
-        file: `${outputPath}/history.min.js`,
-        format: 'umd',
-        name: pkg.name,
-        sourcemap: true,
-      },
-    },
+    getBuildConfig(pkg, {
+      format: 'umd',
+      outputSuffix: '.umd',
+      babel: { targets: defaultTargets },
+    }),
+    getBuildConfig(pkg, {
+      format: 'umd',
+      outputSuffix: '.min',
+      minify: true,
+      babel: { targets: defaultTargets },
+    }),
   ];
+
+  return config;
 }
