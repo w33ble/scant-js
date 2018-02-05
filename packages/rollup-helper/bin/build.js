@@ -8,7 +8,7 @@ require = require('@std/esm')(module);
 const fs = require('fs');
 const path = require('path');
 const mri = require('mri');
-const { build, configs } = require('../src/index');
+const { build, configs } = require('..');
 
 const splitArgs = args => args.split(',');
 

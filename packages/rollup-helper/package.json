@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Rollup helper for @scant packages",
-  "main": "index.js",
+  "main": "index",
   "bin": {
     "scant-build": "bin/build.js"
   },
