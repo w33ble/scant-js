@@ -1,3 +1,4 @@
+import merge from 'lodash.merge';
 import { getBuildConfig } from './rollup';
 
 export default function getConfig(pkg, opts = {}) {
@@ -5,7 +6,7 @@ export default function getConfig(pkg, opts = {}) {
     browsers: 'last 2 Chrome versions, last 2 Firefox versions, safari >= 11, edge >= 15',
   };
 
-  const mergeConfigs = obj => Object.assign({}, opts, obj);
+  const mergeConfigs = obj => merge({}, opts, obj);
 
   const config = [
     getBuildConfig(

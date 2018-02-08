@@ -1,7 +1,8 @@
+import merge from 'lodash.merge';
 import { getTestConfig } from './rollup';
 
 export default function getConfig(pkg, opts = {}) {
-  const mergeConfigs = obj => Object.assign({}, opts, obj);
+  const mergeConfigs = obj => merge({}, opts, obj);
 
   return getTestConfig(
     pkg,
