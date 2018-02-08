@@ -35,6 +35,19 @@ const getBabelConfig = ({ targets, include, exclude }) => ({
   exclude,
 });
 
+const parseOptions = (pkg, opts) => ({
+  format: opts.format || 'es',
+  minify: Boolean(opts.minify),
+  outputSuffix: opts.outputSuffix || '',
+  external: opts.external === true ? Object.keys(pkg.dependencies || {}) : opts.external || [],
+  globals: opts.globals || {},
+  babel: {
+    targets: opts.babel.targets || { browsers: 'defaults' },
+    include: opts.babel.include || ['src/**'],
+    exclude: opts.babel.exclude || [],
+  },
+});
+
 export const outputPath = 'dist';
 
 export const getBanner = pkg => `/*
@@ -46,21 +59,9 @@ export const getBanner = pkg => `/*
 export const getBuildConfig = (pkg, opts = {}) => {
   verifyProps(pkg, ['name', 'version', 'license']);
 
-  const dependencies = Object.keys(pkg.dependencies || {});
   const banner = getBanner(pkg);
   const basename = getBasename(pkg.name);
-  const options = {
-    format: opts.format || 'es',
-    minify: Boolean(opts.minify),
-    outputSuffix: opts.outputSuffix || '',
-    external: opts.external === true ? dependencies : opts.external || [],
-    babel: {
-      targets: opts.babel.targets || { browsers: 'defaults' },
-      include: opts.babel.include || ['src/**'],
-      exclude: opts.babel.exclude || [],
-    },
-  };
-
+  const options = parseOptions(pkg, opts);
   const babelConfig = getBabelConfig(options.babel);
 
   const config = {
@@ -68,16 +69,17 @@ export const getBuildConfig = (pkg, opts = {}) => {
     external: options.external,
     plugins: [
       json(),
-      builtins(),
-      globals(),
       resolve({
-        jsnext: false,
-        module: false,
-        browser: true,
+        main: true,
+        module: true,
+        jsnext: true,
+        browser: false,
         preferBuiltins: true,
       }),
       babel(babelConfig),
       commonjs(),
+      builtins(),
+      globals(),
       progress(),
       filesize(),
     ],
@@ -109,26 +111,14 @@ export const getTestConfig = (pkg, opts = {}) => {
   verifyProps(pkg, ['name']);
 
   const basename = getBasename(pkg.name);
-  const dependencies = Object.keys(pkg.dependencies || {});
-  const options = {
-    external: opts.external === true ? dependencies : opts.external || [],
-    babel: {
-      targets: opts.babel.targets || { browsers: 'defaults' },
-      include: opts.babel.include || ['src/**'],
-      exclude: opts.babel.exclude || [],
-    },
-  };
-
-  const babelConfig = getBabelConfig(options);
+  const options = parseOptions(pkg, opts);
+  const babelConfig = getBabelConfig(options.babel);
 
   return {
     // input: 'src/index.js',
-    external: options.external,
+    // external: options.external,
     plugins: [
       json(),
-      commonjs(),
-      builtins(),
-      globals(),
       resolve({
         jsnext: false,
         module: false,
@@ -139,6 +129,9 @@ export const getTestConfig = (pkg, opts = {}) => {
         include: ['./src/**/*.js'],
       }),
       babel(babelConfig),
+      commonjs(),
+      builtins(),
+      globals(),
     ],
     output: {
       format: 'iife',
