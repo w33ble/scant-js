@@ -133,10 +133,17 @@ export default function createRouter(routes, opts = {}) {
       if (!routeConfigs.names.includes(name)) return false;
 
       // build and return the route given using provided params
-      // throws when a route can not be built
       const routeIndex = routeConfigs.configs.findIndex(config => config.name === name);
-      const route = routeConfigs.parsers[routeIndex].stringify(params);
-      return `${options.hashChar}${options.basepath}${route}`;
+
+      try {
+        // throws when a route can not be built
+        const route = routeConfigs.parsers[routeIndex].stringify(params);
+        return `${options.hashChar}${options.basepath}${route}`;
+      } catch (e) {
+        // add a little more context to the thrown errors
+        e.message = `Route can not be created, ${e.message}`;
+        throw e;
+      }
     },
   };
 }
