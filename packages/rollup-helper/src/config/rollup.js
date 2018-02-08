@@ -68,7 +68,6 @@ export const getBuildConfig = (pkg, opts = {}) => {
     external: options.external,
     plugins: [
       json(),
-      commonjs(),
       builtins(),
       globals(),
       resolve({
@@ -78,6 +77,7 @@ export const getBuildConfig = (pkg, opts = {}) => {
         preferBuiltins: true,
       }),
       babel(babelConfig),
+      commonjs(),
       progress(),
       filesize(),
     ],
