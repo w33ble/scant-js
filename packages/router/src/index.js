@@ -56,30 +56,33 @@ export default function createRouter(routes, opts = {}) {
     basepath: startsWithSlash(opts.basepath) ? getPath(opts.basepath) : '',
   };
 
-  // flatten routes into descrete objects and parsed paths
-  const routeConfigs = routes.reduce(
-    (acc, route) => {
-      parseRoute(route).forEach(({ parser, ...routeConfig }) => {
-        if (routeConfig.name != null && acc.names.includes(routeConfig.name)) {
-          throw new Error(
-            `Route with name '${routeConfig.name}' already defined, names must be unique`
-          );
-        }
+  const routeConfigs = { configs: [], parsers: [], names: [] };
 
-        acc.parsers.push(parser);
-        acc.configs.push(routeConfig);
-        acc.names.push(routeConfig.name);
-      });
+  function addRoute(route) {
+    // parse route definition into flattened collection of routes (children included)
+    const parsedRoutes = parseRoute(route);
 
-      return acc;
-    },
-    { configs: [], parsers: [], names: [] }
-  );
+    // add all of the parsed routes to the main routeConfig
+    parsedRoutes.forEach(({ parser, ...routeConfig }) => {
+      if (routeConfig.name != null && routeConfigs.names.includes(routeConfig.name)) {
+        throw new Error(
+          `Route with name '${routeConfig.name}' already defined, names must be unique`
+        );
+      }
+
+      routeConfigs.parsers.push(parser);
+      routeConfigs.configs.push(routeConfig);
+      routeConfigs.names.push(routeConfig.name);
+    });
+  }
 
   function getRoute(url) {
     const index = routeConfigs.parsers.findIndex(parser => parser.match(url));
     return index < 0 ? false : { ...routeConfigs.configs[index], index };
   }
+
+  // load any initial routes
+  routes.forEach(addRoute);
 
   return {
     // given a URL, check the route collection for a match
