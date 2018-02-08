@@ -99,7 +99,7 @@ export default function createRouter(routes, opts = {}) {
     },
 
     // given a URL, check routes collection, parse params & execute the action of match
-    async parse(url) {
+    parse(url) {
       const matched = getRoute(url);
 
       // no match, nothing left to do
@@ -121,8 +121,7 @@ export default function createRouter(routes, opts = {}) {
         router: this,
       };
 
-      await matched.action(payload);
-      return payload;
+      return Promise.resolve(matched.action(payload)).then(() => payload);
     },
 
     // given a name and optional params, generate a URL from the routes collection
