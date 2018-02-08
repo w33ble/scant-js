@@ -43,6 +43,7 @@ function parseRoute(route, path = '') {
       path: fullPath,
       action: route.action,
       name: route.name,
+      meta: route.meta,
       parser: new Path(fullPath),
     },
   ];
@@ -115,9 +116,9 @@ export default function createRouter(routes, opts = {}) {
 
       const payload = {
         url,
-        match: { path: matched.path, name: matched.name },
-        router: this,
         params,
+        match: { path: matched.path, name: matched.name, meta: matched.meta },
+        router: this,
       };
 
       await matched.action(payload);
