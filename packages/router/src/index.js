@@ -1,11 +1,5 @@
 import Path from 'url-pattern';
-
-// helper functions
-const isObjectLike = val => typeof val === 'object' && val != null;
-
-const hasKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
-
-const startsWithSlash = path => /^\//.test(path);
+import { isObjectLike, hasKey, startsWithSlash } from './utils';
 
 // path format helpers
 const isValidRouteConfig = conf => {
