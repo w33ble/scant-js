@@ -96,6 +96,7 @@ export const getBuildConfig = (pkg, opts = {}) => {
   return {
     inputOptions: config,
     outputOptions: {
+      globals: options.globals,
       file: `${outputPath}/${basename}${options.outputSuffix}.js`,
       format: options.format,
       name: pkg.name,
