@@ -9,7 +9,9 @@
     "access": "public"
   },
   "scripts": {
-    "test": "ava"
+    "version": "npm run build",
+    "test": "ava",
+    "build": "scant-build"
   },
   "ava": {
     "require": [
@@ -18,6 +20,7 @@
   },
   "@std/esm": "cjs",
   "devDependencies": {
+    "@scant/rollup-helper": "*",
     "@std/esm": "^0.18.0",
     "ava": "^0.24.0"
   }
