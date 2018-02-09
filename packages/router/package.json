@@ -4,6 +4,7 @@
   "description": "Dead simple router",
   "main": "dist/router.umd.js",
   "module": "dist/router.js",
+  "browser": "dist/router.min.js",
   "author": "Joe Fleming (https://github.com/w33ble)",
   "repository": "https://github.com/w33ble/scant-js/tree/master/packages/router",
   "license": "MIT",
@@ -11,15 +12,15 @@
     "access": "public"
   },
   "scripts": {
+    "version": "npm run build",
     "test": "tape 'test/index.js'",
-    "build": "rimraf dist && scant-build"
+    "build": "scant-build --ext url-pattern:Path"
   },
   "dependencies": {
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {
     "@scant/rollup-helper": "*",
-    "rimraf": "^2.6.2",
     "tape": "^4.8.0"
   }
 }

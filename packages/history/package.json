@@ -10,8 +10,9 @@
     "access": "public"
   },
   "scripts": {
+    "version": "npm run build",
     "test": "rimraf coverage && karma start .karma.js --single-run",
-    "build": "rimraf dist && scant-build"
+    "build": "scant-build"
   },
   "dependencies": {
     "@scant/emitter": "^0.2.0"
@@ -24,7 +25,6 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-rollup-preprocessor": "^5.0.2",
     "karma-tap": "^3.1.1",
-    "rimraf": "^2.6.2",
     "tape": "^4.8.0"
   }
 }
