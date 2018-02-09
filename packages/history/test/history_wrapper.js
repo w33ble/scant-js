@@ -18,7 +18,7 @@ test('wraps and unwraps default methods', t => {
 
   // make sure the correct methods are cached
   methods.forEach(method => {
-    t.is(typeof window.history[method], 'function', `history.${method} in a function`);
+    t.is(typeof window.history[method], 'function', `history.${method} is a function`);
     t.is(cache[method], window.history[method], `${method} function is in the cache`);
   });
 
