@@ -1,8 +1,9 @@
+/* eslint no-console: 0 */
 import { rollup } from 'rollup';
 import buildConfig from './config/build';
 import testConfig from './config/test';
 
-export const config = {
+export const configs = {
   build: buildConfig,
   test: testConfig,
 };

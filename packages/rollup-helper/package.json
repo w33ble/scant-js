@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Rollup helper for @scant packages",
-  "main": "index.js",
+  "main": "index",
   "bin": {
     "scant-build": "bin/build.js"
   },
@@ -13,6 +13,13 @@
   "dependencies": {
     "@std/esm": "^0.18.0",
     "@w33ble/rollup-plugin-istanbul": "^2.0.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-async-to-promises": "^0.5.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "lodash.merge": "^4.6.1",
+    "mri": "^1.1.0",
     "rollup": "^0.55.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-babel-minify": "^3.1.2",

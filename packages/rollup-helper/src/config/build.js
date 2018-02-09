@@ -1,65 +1,56 @@
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import progress from 'rollup-plugin-progress';
-import filesize from 'rollup-plugin-filesize';
-import minify from 'rollup-plugin-babel-minify';
-import { getBanner, outputPath, basePlugins } from './common';
+import merge from 'lodash.merge';
+import { getBuildConfig } from './rollup';
 
-const config = {
-  input: 'src/index.js',
-  plugins: basePlugins.concat([
-    resolve({
-      jsnext: false,
-      module: false,
-      browser: true,
-      preferBuiltins: true,
-    }),
-    babel({
-      exclude: 'node_modules/**', // only transpile our source code
-    }),
-    progress(),
-    filesize(),
-  ]),
-};
+export default function getConfig(pkg, opts = {}) {
+  const defaultTargets = {
+    browsers: 'last 2 Chrome versions, last 2 Firefox versions, safari >= 11, edge >= 15',
+  };
 
-export default function getBuildConfig(pkg) {
-  const banner = getBanner(pkg);
+  const mergeConfigs = obj => merge({}, opts, obj);
 
-  return [
-    {
-      inputOptions: config,
-      outputOptions: {
-        file: `${outputPath}/history.js`,
+  const config = [
+    getBuildConfig(
+      pkg,
+      mergeConfigs({
         format: 'es',
-        name: pkg.name,
-      },
-    },
-    {
-      inputOptions: config,
-      outputOptions: {
-        file: `${outputPath}/history.umd.js`,
+        babel: {
+          targets: {
+            browsers: '> 5%, last 2 Chrome versions, last 2 Firefox versions',
+          },
+        },
+      })
+    ),
+    getBuildConfig(
+      pkg,
+      mergeConfigs({
         format: 'umd',
-        name: pkg.name,
-        banner,
-        sourcemap: true,
-      },
-    },
-    {
-      inputOptions: Object.assign({}, config, {
-        plugins: config.plugins.concat([
-          minify({
-            comments: false,
-            sourceMap: true,
-            banner,
-          }),
-        ]),
-      }),
-      outputOptions: {
-        file: `${outputPath}/history.min.js`,
+        outputSuffix: '.legacy',
+        minify: true,
+        babel: {
+          targets: {
+            browsers: 'ie >= 9, last 2 Safari versions',
+          },
+        },
+      })
+    ),
+    getBuildConfig(
+      pkg,
+      mergeConfigs({
         format: 'umd',
-        name: pkg.name,
-        sourcemap: true,
-      },
-    },
+        outputSuffix: '.umd',
+        babel: { targets: defaultTargets },
+      })
+    ),
+    getBuildConfig(
+      pkg,
+      mergeConfigs({
+        format: 'umd',
+        outputSuffix: '.min',
+        minify: true,
+        babel: { targets: defaultTargets },
+      })
+    ),
   ];
+
+  return config;
 }

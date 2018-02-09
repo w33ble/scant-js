@@ -18,8 +18,6 @@
   },
   "devDependencies": {
     "@scant/rollup-helper": "*",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "^1.3.0",
