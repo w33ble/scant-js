@@ -7,7 +7,8 @@
 const fs = require('fs');
 const path = require('path');
 const mri = require('mri');
-const { build, configs } = require('..');
+const rimraf = require('rimraf');
+const { build, configs, outputPath } = require('..');
 
 // argument parsing
 const cliArgs = mri(process.argv.slice(2), {
@@ -58,6 +59,9 @@ const getConfig = (input, opts) => {
 
   return getBuildConfig();
 };
+
+// purge the build path
+rimraf.sync(outputPath);
 
 // build package based on config
 const externalArgs = parseArgs(cliArgs.external);

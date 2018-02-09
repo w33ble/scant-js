@@ -3,6 +3,8 @@ import { rollup } from 'rollup';
 import buildConfig from './config/build';
 import testConfig from './config/test';
 
+export { outputPath } from './config/rollup';
+
 export const configs = {
   build: buildConfig,
   test: testConfig,
