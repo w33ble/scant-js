@@ -12,7 +12,7 @@
   },
   "scripts": {
     "version": "npm run build",
-    "test": "rimraf coverage && karma start .karma.js --single-run",
+    "test": "karma start .karma.js --single-run",
     "build": "scant-build"
   },
   "devDependencies": {
