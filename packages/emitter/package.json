@@ -1,6 +1,6 @@
 {
   "name": "@scant/emitter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/emitter.umd.js",
   "module": "dist/emitter.js",
   "browser": "dist/emitter.min.js",
@@ -22,7 +22,7 @@
   },
   "@std/esm": "cjs",
   "devDependencies": {
-    "@scant/rollup-helper": "*",
+    "@scant/rollup-helper": "^0.0.1",
     "@std/esm": "^0.18.0",
     "ava": "^0.24.0"
   }

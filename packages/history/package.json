@@ -1,6 +1,6 @@
 {
   "name": "@scant/history",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/history.umd.js",
   "module": "dist/history.js",
   "browser": "dist/history.min.js",
@@ -16,8 +16,8 @@
     "build": "scant-build"
   },
   "devDependencies": {
-    "@scant/emitter": "^0.2.0",
-    "@scant/rollup-helper": "*",
+    "@scant/emitter": "^0.2.1",
+    "@scant/rollup-helper": "^0.0.1",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "^1.3.0",

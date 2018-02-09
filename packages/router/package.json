@@ -1,6 +1,6 @@
 {
   "name": "@scant/router",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Dead simple router",
   "main": "dist/router.umd.js",
   "module": "dist/router.js",
@@ -20,7 +20,7 @@
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {
-    "@scant/rollup-helper": "*",
+    "@scant/rollup-helper": "^0.0.1",
     "tape": "^4.8.0"
   }
 }
