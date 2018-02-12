@@ -1,6 +1,6 @@
 {
   "name": "@scant/router",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dead simple router",
   "main": "dist/router.umd.js",
   "module": "dist/router.js",
