@@ -16,6 +16,12 @@ const getPath = (path, appendTo = '') => {
   return newPath.length > 1 ? newPath.replace(/\/$/, '') : newPath;
 };
 
+const getMatchedObject = matched => ({
+  path: matched.path,
+  name: matched.name,
+  meta: matched.meta,
+});
+
 // given a route object and optional parent path, create an array of route configs
 function parseRoute(route, path = '') {
   if (!isValidRouteConfig(route)) {
@@ -88,9 +94,8 @@ export default function createRouter(routes, opts = {}) {
       // no match, nothing left to do
       if (matched === false) return false;
 
-      // no match, nothing left to do
-      const { path, name } = matched;
-      return { path, name };
+      // return the matched definition object
+      return getMatchedObject(matched);
     },
 
     // given a URL, check routes collection, parse params & execute the action of match
@@ -112,7 +117,7 @@ export default function createRouter(routes, opts = {}) {
       const payload = {
         url,
         params,
-        match: { path: matched.path, name: matched.name, meta: matched.meta },
+        match: getMatchedObject(matched),
         router: this,
       };
 
