@@ -103,7 +103,7 @@ export default function createRouter(routes, opts = {}) {
       const matched = getRoute(url);
 
       // no match, nothing left to do
-      if (matched === false) return false;
+      if (matched === false) return Promise.resolve(false);
 
       // parse params and call the route handler
       const params = routeConfigs.parsers[matched.index].match(url);
