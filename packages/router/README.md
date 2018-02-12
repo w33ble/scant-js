@@ -13,11 +13,11 @@ yarn add @scant/router
 
 ## Usage
 
-This package is basically a wrapper around simple path matching. It currently uses [url-pattern](https://github.com/snd/url-pattern) to handle matching. It allows you to define routes as an array of objects, with nesting, naming, and a handler function. You can also optionally attach metadata to the route defintion, which will be available in the route handlers.
+This package is basically a wrapper around simple path matching. It currently uses [url-pattern](https://github.com/snd/url-pattern) to handle matching. It allows you to define routes as an array of objects, with nesting, naming, and a handler function. You can also optionally attach metadata to the route defintion, which will be available in the route handlers or when finding the matching route for a url.
 
 This package **does not** watch or modify the page location. It's meant to be used with something that can observe changes to `window.history`. Consider using with something like [@scant/history](https://github.com/w33ble/scant-js/tree/master/packages/history) or [history](https://github.com/ReactTraining/history).
 
-Every route must have a `path` property and either an `action` property or a `children` property. Each path can optionally have a `name` property, which can be used to turn a parameter object into a url. Trailing slashes are not required. See [url-pattern](https://github.com/snd/url-pattern) to learn how the pattern matching works.
+Every route must have a `path` property. Each route can optionally have a `name` property, which can be used to turn a parameter object into a url. For the path, trailing slashes are not required. See [url-pattern](https://github.com/snd/url-pattern) to learn how the pattern matching works. Additionally, a route can contain a `meta` property, as well as an `action` or a `children` property.
 
 ```js
 import createRouter from '@scant/router';
@@ -50,6 +50,13 @@ const routes = [
       }
     ]
   },
+  {
+    name: 'matcher'
+    path: '/match/:some/:params',
+    meta: {
+      anthing: 'goes in this object',
+    },
+  },
 ];
 
 const router = createRouter(routes);
@@ -63,7 +70,7 @@ const router = createRouter(routes);
 
 ### Action
 
-The action is the route handler, and it recieves a `payload` object consisting of the following:
+The action is the route handler function, and it recieves a `payload` object consisting of the following:
 
 - `url`: The url being checked.
 - `match`: The matched route definition object. It will include the `name`, full `path`, and any `meta` data. If the matching route is part of nested `children`, the `path` will be the entire constructed path (ex. `/welcome/:name` in the `welcomeName` route above).
