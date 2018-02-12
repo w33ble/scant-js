@@ -1,13 +1,13 @@
 import Path from 'url-pattern';
-import { isObjectLike, hasKey, startsWithSlash } from './utils';
+import { isType, hasKey, startsWithSlash, noop } from './utils';
 
 // path format helpers
 const isValidRouteConfig = conf => {
-  if (!isObjectLike(conf)) return false;
-  const validProps = hasKey(conf, 'action') || hasKey(conf, 'children');
-  const validAction = !conf.action || typeof conf.action === 'function';
-  const validMeta = typeof conf.meta === 'undefined' || isObjectLike(conf.meta);
-  return hasKey(conf, 'path') && validProps && validAction && validMeta;
+  if (!isType('object', conf)) return false;
+  const validAction = isType('undefined', conf.action) || isType('function', conf.action);
+  const validChildren = isType('undefined', conf.children) || Array.isArray(conf.children);
+  const validMeta = isType('undefined', conf.meta) || isType('object', conf.meta);
+  return hasKey(conf, 'path') && validAction && validChildren && validMeta;
 };
 
 const getPath = (path, appendTo = '') => {
@@ -41,10 +41,10 @@ function parseRoute(route, path = '') {
 
   return [
     {
-      path: fullPath,
-      action: route.action,
       name: route.name,
+      path: fullPath,
       meta: route.meta || {},
+      action: route.action || noop,
       parser: new Path(fullPath),
     },
   ];
