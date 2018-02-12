@@ -6,7 +6,8 @@ const isValidRouteConfig = conf => {
   if (!isObjectLike(conf)) return false;
   const validProps = hasKey(conf, 'action') || hasKey(conf, 'children');
   const validAction = !conf.action || typeof conf.action === 'function';
-  return hasKey(conf, 'path') && validProps && validAction;
+  const validMeta = typeof conf.meta === 'undefined' || isObjectLike(conf.meta);
+  return hasKey(conf, 'path') && validProps && validAction && validMeta;
 };
 
 const getPath = (path, appendTo = '') => {
@@ -37,7 +38,7 @@ function parseRoute(route, path = '') {
       path: fullPath,
       action: route.action,
       name: route.name,
-      meta: route.meta,
+      meta: route.meta || {},
       parser: new Path(fullPath),
     },
   ];
