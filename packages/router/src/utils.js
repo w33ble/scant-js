@@ -2,7 +2,7 @@ export const isType = (type, val) => {
   if (type === 'object') return typeof val === 'object' && val != null && !Array.isArray(val);
   if (type === 'array') return Array.isArray(val);
   if (type === 'null') return val === null;
-  if (type === 'undefined') return val == null;
+  if (type === 'unset') return val == null;
   const valType = typeof val;
   return valType === type;
 };

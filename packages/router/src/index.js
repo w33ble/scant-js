@@ -4,9 +4,9 @@ import { isType, hasKey, startsWithSlash, noop } from './utils';
 // path format helpers
 const isValidRouteConfig = conf => {
   if (!isType('object', conf)) return false;
-  const validAction = isType('undefined', conf.action) || isType('function', conf.action);
-  const validChildren = isType('undefined', conf.children) || Array.isArray(conf.children);
-  const validMeta = isType('undefined', conf.meta) || isType('object', conf.meta);
+  const validAction = isType('unset', conf.action) || isType('function', conf.action);
+  const validChildren = isType('unset', conf.children) || isType('array', conf.children);
+  const validMeta = isType('unset', conf.meta) || isType('object', conf.meta);
   return hasKey(conf, 'path') && validAction && validChildren && validMeta;
 };
 
@@ -32,7 +32,7 @@ function parseRoute(route, path = '') {
   if (fullPath === false) throw new Error(`Route's path is invalid: ${route.path}`);
 
   // if children is defined, recurse into child definitions, appending parent paths
-  if (Array.isArray(route.children)) {
+  if (isType('array', route.children)) {
     return route.children.reduce(
       (routesAcc, childRoute) => routesAcc.concat(parseRoute(childRoute, fullPath)),
       []
@@ -51,7 +51,7 @@ function parseRoute(route, path = '') {
 }
 
 export default function createRouter(routes, opts = {}) {
-  if (!Array.isArray(routes)) throw new Error('An array of route objects is required');
+  if (!isType('array', routes)) throw new Error('An array of route objects is required');
 
   const options = {
     hashChar: opts.useHash ? '#' : opts.useHashBang ? '#!' : '', // eslint-disable-line no-nested-ternary
