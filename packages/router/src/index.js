@@ -100,28 +100,33 @@ export default function createRouter(routes, opts = {}) {
 
     // given a URL, check routes collection, parse params & execute the action of match
     parse(url) {
-      const matched = getRoute(url);
+      return new Promise((resolve, reject) => {
+        const matched = getRoute(url);
 
-      // no match, nothing left to do
-      if (matched === false) return Promise.resolve(false);
+        // no match, nothing left to do
+        if (matched === false) {
+          reject(new Error('No matching route found:', url));
+          return;
+        }
 
-      // parse params and call the route handler
-      const params = routeConfigs.parsers[matched.index].match(url);
+        // parse params and call the route handler
+        const params = routeConfigs.parsers[matched.index].match(url);
 
-      // cast any number values to numbers
-      Object.keys(params).forEach(key => {
-        const numberVal = Number.parseFloat(params[key]);
-        if (!Number.isNaN(numberVal)) params[key] = numberVal;
+        // cast any number values to numbers
+        Object.keys(params).forEach(key => {
+          const numberVal = Number.parseFloat(params[key]);
+          if (!Number.isNaN(numberVal)) params[key] = numberVal;
+        });
+
+        const payload = {
+          url,
+          params,
+          match: getMatchedObject(matched),
+          router: this,
+        };
+
+        Promise.resolve(matched.action(payload)).then(() => resolve(payload));
       });
-
-      const payload = {
-        url,
-        params,
-        match: getMatchedObject(matched),
-        router: this,
-      };
-
-      return Promise.resolve(matched.action(payload)).then(() => payload);
     },
 
     // given a name and optional params, generate a URL from the routes collection
