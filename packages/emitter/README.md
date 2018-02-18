@@ -4,6 +4,7 @@ Dead simple event emitter.
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/w33ble/scant-js/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/@scant/emitter.svg)](https://www.npmjs.com/package/@scant/emitter)
+![size](http://img.badgesize.io/https://unpkg.com/@scant/emitter?compression=gzip&label=minzip_size)
 
 ## Install
 
