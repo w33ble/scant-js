@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/w33ble/scant-js/tree/master/packages/history/compare/@scant/history@0.1.1...@scant/history@0.1.2) (2018-02-18)
+
+
+### Bug Fixes
+
+* remove rimraf use for coverage ([951c2c4](https://github.com/w33ble/scant-js/tree/master/packages/history/commit/951c2c4))
+
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/w33ble/scant-js/tree/master/packages/history/compare/@scant/history@0.1.0...@scant/history@0.1.1) (2018-02-09)
 

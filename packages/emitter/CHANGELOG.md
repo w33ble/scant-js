@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/w33ble/scant-js/tree/master/packages/emitter/compare/@scant/emitter@0.2.1...@scant/emitter@0.2.2) (2018-02-18)
+
+
+
+
+**Note:** Version bump only for package @scant/emitter
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/w33ble/scant-js/tree/master/packages/emitter/compare/@scant/emitter@0.2.0...@scant/emitter@0.2.1) (2018-02-09)
 

@@ -1,6 +1,6 @@
 {
   "name": "@scant/router",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Dead simple router",
   "main": "dist/router.js",
   "module": "dist/router.es.js",
@@ -18,11 +18,17 @@
   },
   "scant-build": {
     "moduleName": "router",
-    "external": ["url-pattern"],
+    "external": [
+      "url-pattern"
+    ],
     "global": {
       "url-pattern": "Path"
     },
-    "format": ["es", "umd", "umd-min"],
+    "format": [
+      "es",
+      "umd",
+      "umd-min"
+    ],
     "filename": "router[suffix].js",
     "banner": true
   },
@@ -30,7 +36,7 @@
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {
-    "@scant/build-helper": "*",
+    "@scant/build-helper": "^0.0.1",
     "tape": "^4.8.0"
   }
 }

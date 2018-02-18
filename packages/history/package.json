@@ -1,6 +1,6 @@
 {
   "name": "@scant/history",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/history.js",
   "module": "dist/history.es.js",
   "browser": "dist/history.min.js",
@@ -10,7 +10,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "version": "npm run build",
     "test": "karma start .karma.js --single-run",
@@ -19,13 +21,17 @@
   "scant-build": {
     "moduleName": "history",
     "inline": true,
-    "format": ["es", "umd", "umd-min"],
+    "format": [
+      "es",
+      "umd",
+      "umd-min"
+    ],
     "filename": "history[suffix].js",
     "banner": true
   },
   "devDependencies": {
-    "@scant/build-helper": "*",
-    "@scant/emitter": "^0.2.1",
+    "@scant/build-helper": "^0.0.1",
+    "@scant/emitter": "^0.2.2",
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
