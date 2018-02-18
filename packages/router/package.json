@@ -2,8 +2,8 @@
   "name": "@scant/router",
   "version": "0.0.2",
   "description": "Dead simple router",
-  "main": "dist/router.umd.js",
-  "module": "dist/router.js",
+  "main": "dist/router.js",
+  "module": "dist/router.es.js",
   "browser": "dist/router.min.js",
   "author": "Joe Fleming (https://github.com/w33ble)",
   "repository": "https://github.com/w33ble/scant-js/tree/master/packages/router",
@@ -16,11 +16,21 @@
     "test": "tape 'test/index.js'",
     "build": "scant-build --ext url-pattern:Path"
   },
+  "scant-build": {
+    "moduleName": "router",
+    "external": ["url-pattern"],
+    "global": {
+      "url-pattern": "Path"
+    },
+    "format": ["es", "umd", "umd-min"],
+    "filename": "router[suffix].js",
+    "banner": true
+  },
   "dependencies": {
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {
-    "@scant/rollup-helper": "^0.0.1",
+    "@scant/build-helper": "*",
     "tape": "^4.8.0"
   }
 }

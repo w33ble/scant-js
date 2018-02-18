@@ -1,8 +1,5 @@
-const { configs } = require('@scant/rollup-helper');
-const pkg = require('./package.json');
-
+const rollupConfig = require('./.rollup_karma');
 const isCI = Boolean(process.env.CI);
-const rollupConfig = configs.test(pkg);
 
 module.exports = function(config) {
   config.set({
