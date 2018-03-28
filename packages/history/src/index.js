@@ -1,6 +1,6 @@
 /* eslint no-param-reassign: 0 */
 
-import createEmitter from '@scant/emitter';
+import createEmitter from '@scant/emitter'; // eslint-disable-line import/no-extraneous-dependencies
 import createHistoryWrapper from './history_wrapper';
 
 export default function createHistory(root, onChange, options = {}) {
