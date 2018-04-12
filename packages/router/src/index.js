@@ -110,7 +110,7 @@ export default function createRouter(routes, opts = {}) {
 
       // cast any number values to numbers
       Object.keys(params).forEach(key => {
-        const numberVal = Number.parseFloat(params[key]);
+        const numberVal = parseFloat(params[key]);
         if (!Number.isNaN(numberVal)) params[key] = numberVal;
       });
 
