@@ -111,7 +111,8 @@ export default function createRouter(routes, opts = {}) {
   return {
     // given a URL, check the route collection for a match
     match(url) {
-      const matched = getRoute(url);
+      const location = parseUrl(url);
+      const matched = getRoute(location.pathname);
 
       // no match, nothing left to do
       if (matched === false) return false;
@@ -122,7 +123,8 @@ export default function createRouter(routes, opts = {}) {
 
     // given a URL, check routes collection, parse params & execute the action of match
     async parse(url) {
-      const matched = getRoute(url);
+      const location = parseUrl(url);
+      const matched = getRoute(location.pathname);
 
       // no match, nothing left to do
       if (matched === false) throw new Error('No matching route found:', url);
@@ -134,7 +136,7 @@ export default function createRouter(routes, opts = {}) {
       });
 
       const payload = {
-        url,
+        location,
         params: matched.params,
         match: getMatchedObject(matched),
         router: this,
