@@ -16,6 +16,9 @@
     "test": "tape 'test/index.js'",
     "build": "scant-build --ext url-pattern:Path"
   },
+  "files": [
+    "dist"
+  ],
   "scant-build": {
     "moduleName": "router",
     "external": [
