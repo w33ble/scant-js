@@ -10,6 +10,7 @@ const isValidRouteConfig = conf => {
   return hasKey(conf, 'path') && validAction && validChildren && validMeta;
 };
 
+// takes a path (leading /), appends to another path, and returns it without the trailing /
 const getPath = (path, appendTo = '') => {
   if (!startsWithSlash(path)) return false;
   const newPath = `${appendTo.replace(/\/$/, '')}${path}`;
@@ -53,13 +54,16 @@ function parseRoute(route, path = '') {
 export default function createRouter(routes, opts = {}) {
   if (!isType('array', routes)) throw new Error('An array of route objects is required');
 
+  // internal options
   const options = {
     hashChar: opts.useHash ? '#' : opts.useHashBang ? '#!' : '', // eslint-disable-line no-nested-ternary
     basepath: startsWithSlash(opts.basepath) ? getPath(opts.basepath) : '',
   };
 
+  // used to track all route definitions
   const routeConfigs = { configs: [], parsers: [], names: [] };
 
+  // used to build the routeConfigs object
   function addRoute(route) {
     // parse route definition into flattened collection of routes (children included)
     const parsedRoutes = parseRoute(route);
