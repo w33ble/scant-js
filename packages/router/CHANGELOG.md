@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.0.5"></a>
+## 0.0.5 (2018-04-26)
+
+* fix: use the pathname for route matching ([4fa801b](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/4fa801b))
+* chore: add method to parse url string ([496fec3](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/496fec3))
+* chore: add some comments ([f7b330a](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/f7b330a))
+* chore: avoid duplicate url parsing ([02d49ea](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/02d49ea))
+* chore: fix lint file paths ([f9aca46](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/f9aca46))
+* chore: restrict published files ([116b90e](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/116b90e))
+
+
+### BREAKING CHANGE
+
+* this changes when gets passed into the route, removing the url param and instead passing the location object, which still has the url param, but now also pathname, search, and hash
+
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/w33ble/scant-js/tree/master/packages/router/compare/@scant/router@0.0.3...@scant/router@0.0.4) (2018-04-12)
 
