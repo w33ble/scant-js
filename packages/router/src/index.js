@@ -17,6 +17,17 @@ const getPath = (path, appendTo = '') => {
   return newPath.length > 1 ? newPath.replace(/\/$/, '') : newPath;
 };
 
+const parseUrl = path => {
+  const parts = path.match(/^(\/[^?#\s]*)(\?[^#\s]*)?(#[^\s]*)?$/);
+  if (!parts) throw new Error('Failed to extract pathname:', path);
+  return {
+    url: parts[0],
+    pathname: parts[1],
+    search: parts[2],
+    hash: parts[3],
+  };
+};
+
 const getMatchedObject = matched => ({
   path: matched.path,
   name: matched.name,
