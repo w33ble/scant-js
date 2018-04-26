@@ -93,9 +93,16 @@ export default function createRouter(routes, opts = {}) {
     });
   }
 
+  // given a url, return params, matching index, and config, or false of no match
   function getRoute(url) {
-    const index = routeConfigs.parsers.findIndex(parser => parser.match(url));
-    return index < 0 ? false : { ...routeConfigs.configs[index], index };
+    return routeConfigs.parsers.reduce((acc, parser, index) => {
+      // short-circuit if there's already a match
+      if (acc !== false) return acc;
+
+      const params = parser.match(url);
+      if (params) return { ...routeConfigs.configs[index], params, index };
+      return acc;
+    }, false);
   }
 
   // load any initial routes
@@ -120,18 +127,15 @@ export default function createRouter(routes, opts = {}) {
       // no match, nothing left to do
       if (matched === false) throw new Error('No matching route found:', url);
 
-      // parse params and call the route handler
-      const params = routeConfigs.parsers[matched.index].match(url);
-
-      // cast any number values to numbers
-      Object.keys(params).forEach(key => {
-        const numberVal = parseFloat(params[key]);
-        if (!Number.isNaN(numberVal)) params[key] = numberVal;
+      // cast any number values to numbers, mutation is ok, this is our own object
+      Object.keys(matched.params).forEach(key => {
+        const numberVal = parseFloat(matched.params[key]);
+        if (!Number.isNaN(numberVal)) matched.params[key] = numberVal;
       });
 
       const payload = {
         url,
-        params,
+        params: matched.params,
         match: getMatchedObject(matched),
         router: this,
       };
