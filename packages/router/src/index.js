@@ -19,7 +19,7 @@ const getPath = (path, appendTo = '') => {
 
 const parseUrl = path => {
   const parts = path.match(/^(\/[^?#\s]*)(\?[^#\s]*)?(#[^\s]*)?$/);
-  if (!parts) throw new Error('Failed to extract pathname:', path);
+  if (!parts) throw new Error(`Failed to extract pathname: ${path}`);
   return {
     url: parts[0],
     pathname: parts[1],
