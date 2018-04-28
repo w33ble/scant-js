@@ -130,7 +130,7 @@ export default function createRouter(routes, opts = {}) {
       const matched = getRoute(location.pathname);
 
       // no match, nothing left to do
-      if (matched === false) throw new Error('No matching route found:', url);
+      if (matched === false) throw new Error(`No matching route found: ${url}`);
 
       // cast any number values to numbers, mutation is ok, this is our own object
       Object.keys(matched.params).forEach(key => {
