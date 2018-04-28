@@ -16,6 +16,9 @@ cache:
     - node_modules
 
 script:
+  - lerna run build --scope @scant/build-helper # build tool goes first
+  - yarn install --force # re-link the builder cli
+  - lerna run build --scope @scant/emitter # emitter needs to exist for history
   - yarn run test
 
 branches:
