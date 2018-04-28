@@ -57,9 +57,9 @@ test('parse resolves params correctly', t => {
     .catch(err => t.fail(err));
 });
 
-test('parse calls matching route action', async t => {
+test('parse calls matching route action', t => {
   t.plan(3);
-  const handler = async ({ match, params, location }) => {
+  const handler = ({ match, params, location }) => {
     // test items passed to action
     t.deepEqual(match, { path: '/path/:with/:params', name: undefined, meta: {} });
     t.deepEqual(params, { with: 'to', params: 'winning' });
