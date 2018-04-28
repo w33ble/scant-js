@@ -13,7 +13,7 @@
   },
   "scripts": {
     "version": "npm run build",
-    "test": "tape 'test/index.js'",
+    "test": "node -r esm test/index.js",
     "build": "scant-build --ext url-pattern:Path"
   },
   "files": [
@@ -35,11 +35,15 @@
     "filename": "router[suffix].js",
     "banner": true
   },
+  "esm": {
+    "cjs": true
+  },
   "dependencies": {
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {
     "@scant/build-helper": "^0.0.1",
-    "tape": "^4.8.0"
+    "esm": "^3.0.28",
+    "tape": "^4.9.0"
   }
 }

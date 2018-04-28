@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export const isType = (type, val) => {
   if (type === 'object') return typeof val === 'object' && val != null && !Array.isArray(val);
   if (type === 'array') return Array.isArray(val);
