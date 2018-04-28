@@ -1,4 +1,4 @@
-import Path from 'url-pattern';
+import UrlPattern from 'url-pattern';
 import { isType, hasKey, startsWithSlash, noop } from './utils';
 
 // path format helpers
@@ -57,7 +57,10 @@ function parseRoute(route, path = '') {
       path: fullPath,
       meta: route.meta || {},
       action: route.action || noop,
-      parser: new Path(fullPath),
+      parser: new UrlPattern(fullPath, {
+        segmentNameCharset: 'a-zA-Z0-9_-',
+        segmentValueCharset: 'a-zA-Z0-9-_~ %.',
+      }),
     },
   ];
 }
