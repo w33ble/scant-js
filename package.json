@@ -5,7 +5,7 @@
     "bootstrap": "lerna bootstrap",
     "precommit": "lint-staged",
     "lint": "eslint \"packages/*/src/**/*.{js,mjs}\" \"packages/*/test/**/*.{js,mjs}\"",
-    "test": "npm run lint && lerna run build && lerna run test"
+    "test": "lerna run build && npm run lint && lerna run test"
   },
   "repository": {
     "type": "git",
