@@ -21,9 +21,12 @@
     "filename": "[name].js",
     "inline": false
   },
+  "esm": {
+    "cjs": true
+  },
   "dependencies": {
-    "@std/esm": "^0.18.0",
     "bili": "^2.2.7",
+    "esm": "^3.0.28",
     "rimraf": "^2.6.2",
     "use-config": "^2.0.4"
   }
