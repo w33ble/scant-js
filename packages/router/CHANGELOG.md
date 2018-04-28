@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.0"></a>
+# [0.1.0](https://github.com/w33ble/scant-js/tree/master/packages/router/compare/@scant/router@0.0.5...@scant/router@0.1.0) (2018-04-28)
+
+
+### Bug Fixes
+
+* add url to no match error message ([926dcc2](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/926dcc2))
+* allow periods in param values ([0dbbbf8](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/0dbbbf8))
+* include path in parse error message ([5bbd7b1](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/5bbd7b1))
+
+
+
+
 <a name="0.0.5"></a>
 ## 0.0.5 (2018-04-26)
 
