@@ -71,7 +71,7 @@ const router = createRouter(routes);
 
 ### Action
 
-The action is the route handler function, and it recieves a `payload` object consisting of the following:
+The action is the route handler function, and it receives a `payload` object consisting of the following:
 
 - `url`: The url being checked.
 - `match`: The matched route definition object. It will include the `name`, full `path`, and any `meta` data. If the matching route is part of nested `children`, the `path` will be the entire constructed path (ex. `/welcome/:name` in the `welcomeName` route above).
