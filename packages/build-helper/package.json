@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "bili": "^2.2.7",
-    "esm": "^3.0.28",
+    "esm": "^3.1.0",
     "rimraf": "^2.6.2",
     "use-config": "^2.0.4"
   }

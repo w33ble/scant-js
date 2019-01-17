@@ -16,22 +16,14 @@
     "test": "node -r esm test/index.js",
     "build": "scant-build --ext url-pattern:Path"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scant-build": {
     "moduleName": "router",
-    "external": [
-      "url-pattern"
-    ],
+    "external": ["url-pattern"],
     "global": {
       "url-pattern": "Path"
     },
-    "format": [
-      "es",
-      "umd",
-      "umd-min"
-    ],
+    "format": ["es", "umd", "umd-min"],
     "filename": "router[suffix].js",
     "banner": true
   },
@@ -43,7 +35,7 @@
   },
   "devDependencies": {
     "@scant/build-helper": "^0.0.1",
-    "esm": "^3.0.28",
+    "esm": "^3.1.0",
     "tape": "^4.9.0"
   }
 }
