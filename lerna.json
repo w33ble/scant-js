@@ -2,7 +2,7 @@
   "lerna": "2.5.1",
   "packages": ["packages/*"],
   "version": "independent",
-  "commands": {
+  "command": {
     "publish": {
       "conventionalCommits": true,
       "allowBranch": "master",
