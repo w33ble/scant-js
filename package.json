@@ -2,10 +2,11 @@
   "name": "scant",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "yarn install && npm run build:tools && yarn install --force",
+    "build:tools": "cd packages/build-helper && yarn run build && cd ../..",
     "precommit": "lint-staged",
     "lint": "eslint \"packages/*/src/**/*.{js,mjs}\" \"packages/*/test/**/*.{js,mjs}\"",
-    "test": "lerna run build && npm run lint && lerna run test"
+    "test": "yarn workspaces run build && npm run lint && yarn workspaces run test"
   },
   "repository": {
     "type": "git",
