@@ -10,21 +10,29 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "version": "npm run build",
     "test": "ava",
     "build": "scant-build"
   },
   "ava": {
-    "require": ["esm"]
+    "require": [
+      "esm"
+    ]
   },
   "esm": {
     "cjs": true
   },
   "scant-build": {
     "moduleName": "emitter",
-    "format": ["es", "umd", "umd-min"],
+    "format": [
+      "es",
+      "umd",
+      "umd-min"
+    ],
     "filename": "emitter[suffix].js",
     "banner": true
   },

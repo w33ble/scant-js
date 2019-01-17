@@ -13,7 +13,8 @@
   },
   "lint-staged": {
     "ignore": [
-      "package.json"
+      "package.json",
+      "packages/*/package.json"
     ],
     "linters": {
       "*.js": [
