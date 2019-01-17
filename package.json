@@ -12,16 +12,26 @@
     "url": "git+https://github.com/w33ble/scant-js.git"
   },
   "lint-staged": {
-    "ignore": ["package.json"],
-    "*.js": ["eslint --fix"],
-    "*.json": ["prettier --write"]
+    "ignore": [
+      "package.json"
+    ],
+    "linters": {
+      "*.js": [
+        "eslint --fix"
+      ],
+      "*.json": [
+        "prettier --write"
+      ]
+    }
   },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "eslint": "^4.9.0",
@@ -33,7 +43,7 @@
     "eslint-plugin-react": "^7.4.0",
     "husky": "^0.14.3",
     "lerna": "^2.5.1",
-    "lint-staged": "^6.0.0",
+    "lint-staged": "^8.1.0",
     "prettier": "^1.9.0"
   }
 }
