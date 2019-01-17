@@ -14,7 +14,7 @@
   "scripts": {
     "version": "npm run build",
     "test": "node -r esm test/index.js",
-    "build": "scant-build --ext url-pattern:Path"
+    "build": "scant-build"
   },
   "files": [
     "dist"
@@ -25,7 +25,7 @@
       "url-pattern"
     ],
     "global": {
-      "url-pattern": "Path"
+      "url-pattern": "UrlPattern"
     },
     "format": [
       "es",
