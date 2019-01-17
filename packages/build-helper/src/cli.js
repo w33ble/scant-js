@@ -10,7 +10,7 @@ const useConfig = new UseConfig({
 
 rimraf('dist', err => {
   if (err) {
-    console.error(err);
+    console.error(err); // eslint-disable-line no-console
   } else {
     const { config } = useConfig.loadSync();
     build(config);
