@@ -15,12 +15,6 @@ cache:
   directories:
     - node_modules
 
-script:
-  - lerna run build --scope @scant/build-helper # build tool goes first
-  - yarn install --force # re-link the builder cli
-  - lerna run build --scope @scant/emitter # emitter needs to exist for history
-  - yarn run test
-
 branches:
   only:
     - master
@@ -34,3 +28,7 @@ before_script:
   - yarn run bootstrap
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+
+script:
+  - yarn workspaces run build --scope @scant/emitter # emitter needs to exist for history
+  - yarn run test
