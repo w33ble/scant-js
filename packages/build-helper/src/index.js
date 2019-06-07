@@ -1,7 +1,7 @@
-import Bili from 'bili';
+const Bili = require('bili');
 
-export default function(opts = {}) {
+module.exports = function buildHelper(opts = {}) {
   const { write, ...options } = opts;
   if (write === false) return Bili.generate(options);
   return Bili.write(options);
-}
+};

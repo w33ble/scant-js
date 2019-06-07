@@ -1,5 +1,5 @@
-import test from 'ava';
-import createEmitter from '../src/index';
+const test = require('ava');
+const createEmitter = require('..');
 
 let emitter;
 

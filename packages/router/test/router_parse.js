@@ -1,5 +1,5 @@
-import test from 'tape';
-import createRouter from '..';
+const test = require('tape');
+const createRouter = require('..');
 
 test('parse returns a promise', t => {
   t.plan(3);

@@ -1,5 +1,5 @@
-import test from 'tape';
-import createRouter from '..';
+const test = require('tape');
+const createRouter = require('..');
 
 test('router api', t => {
   t.plan(1);

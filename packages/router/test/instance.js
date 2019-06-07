@@ -1,6 +1,7 @@
-import test from 'tape';
-import { noop } from '../src/utils';
-import createRouter from '..';
+const test = require('tape');
+const createRouter = require('..');
+
+const noop = () => {};
 
 test('throws if routes is not an array', t => {
   t.plan(1);
