@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/w33ble/scant-js/tree/master/packages/router/compare/@scant/router@0.1.0...@scant/router@0.1.1) (2019-06-07)
+
+
+### Bug Fixes
+
+* global url-pattern name ([1ff5b9b](https://github.com/w33ble/scant-js/tree/master/packages/router/commit/1ff5b9b))
+
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/w33ble/scant-js/tree/master/packages/router/compare/@scant/router@0.0.5...@scant/router@0.1.0) (2018-04-28)
 
